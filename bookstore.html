@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Bookstore</h1>
+    <p id="demo"></p>
+    <script>
+        //1 start with an array of books:['math','science','history','geography']
+        const books = ['math', 'science', 'history', 'geography'];
+        document.getElementById("demo").innerHTML = "books array: " + books;
+        
+        // add new books using push() and unshift()
+        books.push('sst');
+        document.getElementById("demo").innerHTML += "<br>after push :" + books;
+        books.unshift('english');
+        document.getElementById("demo").innerHTML += "<br>after unshift :"+ books;
+        // remove books using pop() and shift()
+        books.pop();
+        document.getElementById("demo").innerHTML += "<br>after pop :" + books;
+        books.shift();
+        document.getElementById("demo").innerHTML += "<br>after shift :" + books;  
+        // delete a specific book using splice()
+        books.splice(1,1); 
+        document.getElementById("demo").innerHTML += "<br>after splice :" + books; 
+        //merge arrays of new arrivals using concat()
+        const newArrivals = ['art', 'music'];
+        const mergedBooks = books.concat(newArrivals);
+        document.getElementById("demo").innerHTML += "<br>after concat :" + mergedBooks;
+        // copy a part of the book list inside the same array using copyWithin()
+        mergedBooks.copyWithin(0,2,3);  
+        document.getElementById("demo").innerHTML += "<br>after copyWithin :" + mergedBooks;
+        // flatten a nested array of categories using flat()
+        const categories = [['fiction', 'non-fiction'], ['biography', 'autobiography']];
+        const flatCategories = categories.flat();   
+        document.getElementById("demo").innerHTML += "<br>after flat :" + flatCategories;
+        // use slice() to create a small section of books for display
+        const displayBooks = mergedBooks.slice(1,4);
+        document.getElementById("demo").innerHTML += "<br>after slice :" + displayBooks;
+
+        //use tostring() and join() to show the books list as a string with different separators
+        const booksString = mergedBooks.toString();
+        document.getElementById("demo").innerHTML += "<br>after toString :" + booksString;
+        const booksJoined = mergedBooks.join(" - ");
+        document.getElementById("demo").innerHTML += "<br>after join :" + booksJoined;
+
+        // find the total number of books using length
+        const totalBooks = mergedBooks.length;
+        document.getElementById("demo").innerHTML += "<br>Total number of books :" + totalBooks;
+
+        //replace/update a book in the list by directly changing its index
+        mergedBooks[2] = 'philosophy';
+        document.getElementById("demo").innerHTML += "<br>after updating index 2:" + mergedBooks;
+
+        // use forEach() to display all books with their positions
+        document.getElementById("demo").innerHTML += "<br>Books with their positions:<br>";
+        mergedBooks.forEach(function(book, index) {
+            document.getElementById("demo").innerHTML += (index + 1) + ". " + book + "<br>";
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

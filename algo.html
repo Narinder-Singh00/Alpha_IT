@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algo Trading Bot</title>
+    <link rel="stylesheet" href="algo.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Simple Algo Trading Bot</h1>
+
+        <div class="stats">
+            <p><strong>Balance:</strong> ₹<span id="balance">1000</span></p>
+            <p><strong>Holdings:</strong> <span id="holdings">0</span></p>
+            <p><strong>Stock Price:</strong> ₹<span id="price">100</span></p>
+            <p><strong>Action:</strong> <span id="action">-</span></p>
+        </div>
+
+        <button id="runRound">Run Next Round</button>
+        <button id="runTenRounds">Run 10 Rounds</button>
+
+        <h2>Round Log</h2>
+        <div id="logBox" class="log"></div>
+    </div>
+
+    <script src="algo.js"></script>
+</body>
+</html>

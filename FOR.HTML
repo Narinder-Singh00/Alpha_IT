@@ -1,0 +1,63 @@
+<!-- Difference Between for...in and for...of
+
+| Loop Type  | Used For              | What It Loops Through     | Example                                 |
+| ---------- | --------------------- | ------------------------- | --------------------------------------- |
+| `for...in` | Objects               | **Keys (property names)** | Loop through details of a person object |
+| `for...of` | Arrays, Strings, etc. | **Values (items)**        | Loop through list of fruits or letters  | -->
+
+<!-- Imagine you have a bag 👜 with name tags and items inside:
+
+for...in → You read the name tags (labels).
+
+for...of → You take out the items (values) -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>👨‍💼 for...in Loop Example</h2>
+  <p id="demo1"></p>
+
+  <script>
+    const person = {
+      name: "Manish",
+      age: 25,
+      city: "Chandigarh"
+    };
+    const pr = {
+        name: "John",
+        age: 30,        
+        city: "New York"
+    };
+
+    let text = "";
+    for (let key in person) {
+      text += " 👉 " + person[key] + "<br>";
+    }
+
+    let pl ="";
+    for (let key in pr) {
+      pl += " 👉 " + pr[key] + "<br>";
+    }   
+    
+    document.getElementById("demo1").innerHTML = text;
+    document.getElementById("demo1").innerHTML += "<br><h2>👨‍💼 for...in Loop Example 2</h2>" + pl;
+
+
+
+//     let word = "hello";
+//     let output = "";
+
+//     for (let x of word) {
+//       output += x;
+//     }
+
+//     document.getElementById("demo1").innerHTML = output;
+// console.log(output)
+
+
+
+
+
+  </script>
+</body>
+</html>

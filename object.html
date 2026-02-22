@@ -1,0 +1,34 @@
+<!-- 22 dec 2025 -->
+ <!-- object is the key value pair that holds data and functionality together. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const person = {
+        name: "Alice",  // key: name, value: "Alice"
+        age: 30,        // key: age, value: 30        
+        greet: function() {  // key: greet, value: function
+            console.log("Hello, " + this.name); //it uses 'this' to refer to the current object
+        }
+        };
+        person.greet(); // Hello, Alice
+        console.log(typeof person); // object
+
+        let car = {
+            brand: "Toyota",
+            model: "Camry",
+            year: 2020,
+            start: function() {
+                console.log("The " + this.brand + " " + this.model + " is starting.");
+            }
+        };
+        
+    </script>
+</body>
+</html>

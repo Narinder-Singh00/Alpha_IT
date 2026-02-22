@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Callbacks Example 1</h2>
+    <p id="demo"></p>
+
+         <script>
+
+            function sayGoodbye() {
+            document.getElementById("demo").innerHTML += "Goodbye<br>";
+            }
+            function sayHello() {
+            document.getElementById("demo").innerHTML += "Hello<br>";
+            }
+
+
+            // sayHello();
+            // sayGoodbye();  // runs after hello
+
+            // sayGoodbye();
+            // sayHello();    // runs after goodbye
+
+            function sayHello(callback) {
+              console.log("Hello");
+              callback();  // run when Hello is finished
+            }
+
+            // function sayGoodbye() {
+            //   console.log("Goodbye");
+            // }
+
+            sayHello(sayGoodbye);  // Goodbye runs only after Hello completes
+
+            function sayHello(callback) {
+              console.log("Hello");
+              setTimeout(callback, 2000);  // run callback after 2 seconds
+            }
+        </script>
+</body>
+ </html> 
+
+
+
+
+

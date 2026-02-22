@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Reservation System</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #1e3c72, #2a5298);
+        margin: 0;
+        padding: 20px;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: #ffffff;
+        color: #333;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #2a5298;
+    }
+
+    .section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #f4f6f9;
+    }
+
+    .section h3 {
+        margin-bottom: 10px;
+        color: #1e3c72;
+    }
+
+    .passenger {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    button {
+        padding: 8px 15px;
+        background: #2a5298;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #1e3c72;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🚆 Train Reservation System</h1>
+
+    <div class="section" id="passengerList">
+        <h3>1. Passenger List</h3>
+    </div>
+
+    <div class="section" id="seniorCitizens">
+        <h3>2. Senior Citizens (60+)</h3>
+    </div>
+
+    <div class="section" id="uppercaseNames">
+        <h3>3. Uppercase Names</h3>
+    </div>
+
+    <div class="section" id="totalAge">
+        <h3>4 & 5. Total Age (Reduce & ReduceRight)</h3>
+    </div>
+
+    <div class="section" id="ageCheck">
+        <h3>6 & 7. Adult & Minor Check</h3>
+    </div>
+
+    <div class="section" id="seatConversion">
+        <h3>8. Convert Seat Numbers</h3>
+    </div>
+
+    <div class="section" id="spreadRest">
+        <h3>9 & 10. Spread & Rest Operator</h3>
+    </div>
+</div>
+
+<script>
+    // Initial Data
+    let names = ["Amit", "Neha", "Raj", "Priya"];
+    let ages = [25, 62, 17, 45];
+    let seats = [12, 13, 14, 15];
+    let genders = ["M", "F", "M", "F"];
+
+    // 1. Passenger List
+    const passengerDiv = document.getElementById("passengerList");
+    names.forEach((name, index) => {
+        passengerDiv.innerHTML += `
+            <div class="passenger">
+                Passenger: ${name} | Age: ${ages[index]} | Seat: ${seats[index]} | Gender: ${genders[index]}
+            </div>
+        `;
+    });
+
+    // 2. Senior Citizens
+    const seniorDiv = document.getElementById("seniorCitizens");
+    let seniors = ages
+        .map((age, index) => age >= 60 ? names[index] : null)
+        .filter(name => name !== null);
+    seniorDiv.innerHTML += seniors.join(", ");
+
+    // 3. Uppercase Names
+    const upperDiv = document.getElementById("uppercaseNames");
+    let upperNames = names.map(name => name.toUpperCase());
+    upperDiv.innerHTML += upperNames.join(", ");
+
+    // 4. Total Age (Reduce)
+    let totalAge = ages.reduce((sum, age) => sum + age, 0);
+
+    // 5. Total Age (ReduceRight)
+    let totalAgeReverse = ages.reduceRight((sum, age) => sum + age, 0);
+
+    document.getElementById("totalAge").innerHTML += 
+        `Total Age (Reduce): ${totalAge} <br>
+         Total Age (ReduceRight): ${totalAgeReverse}`;
+
+    // 6. Check Adults
+    let allAdults = ages.every(age => age >= 18);
+
+    // 7. Check Minor
+    let hasMinor = ages.some(age => age < 18);
+
+    document.getElementById("ageCheck").innerHTML += 
+        `All Adults: ${allAdults} <br>
+         Has Minor: ${hasMinor}`;
+
+    // 8. Convert Seat Numbers
+    let seatString = "12,13,14,15";
+    let seatArray = Array.from(seatString.split(","), num => Number(num));
+    document.getElementById("seatConversion").innerHTML += seatArray.join(", ");
+
+    // 9. Spread Operator
+    let newNames = [...names, "Rahul", "Sita"];
+
+    // 10. Rest Operator
+    let [firstPassenger, ...remainingPassengers] = names;
+
+    document.getElementById("spreadRest").innerHTML += 
+        `After Spread: ${newNames.join(", ")} <br>
+         First Passenger: ${firstPassenger} <br>
+         Remaining Passengers: ${remainingPassengers.join(", ")}`;
+</script>
+
+</body>
+</html>

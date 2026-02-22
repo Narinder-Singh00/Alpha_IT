@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // simple function
+        function add(a,b){
+            return a+b;
+        }
+        //calling (using) the function
+        console.log(add(2,3));
+        console.log(add(10,20))
+
+        function name(p1, p2, p3){ 
+            return result;
+        } //function keyword tells javascript you are creating a function
+        //name: the name of the function (like naming your recipe)
+
+
+        // function makejuice(f1,f2){
+        //     return "juice made with"+f1+"and"+f2;
+        // }
+        // console.log(makejuice("mango","orange"));
+
+        function makejuice(f1,f2){
+            return `juice made with${f1} and${f2}`;
+        }
+        console.log(makejuice("mango","orange"));
+
+
+        function greet(){
+            console.log("hello,welcome!")
+        }
+        greet();
+
+        //🔹 Multiple Functions with Same Local Variable Name
+
+        function car() {
+        let color = "Red";
+        console.log("Car color: " + color);
+        }
+
+        function bike() {
+        let color = "Blue";
+        console.log("Bike color: " + color);
+        }
+
+        car();   // Car color: Red
+        bike();  // Bike color: Blue
+
+        //👉 Both functions use color, but they don’t interfere with each other because each color is local.
+
+        // 🔹 Parameters vs. Arguments in JavaScript
+        // ✅ Parameters
+
+        // Parameters are like placeholders (labels) in the function definition.
+
+        // They tell the function what kind of input it expects.
+
+        // Think of them as empty boxes waiting to be filled.
+
+        // ✅ Arguments
+
+        // Arguments are the actual values you pass into the function when calling it.
+
+        // They are the real things that go inside the boxes (parameters).
+
+        function greet(name) {   // "name" is a parameter
+        console.log("Hello " + name);
+        }
+        //🔹 JavaScript this in Functions
+        // 👉 Think of this as:
+        // “Who owns the function when it runs?”
+        // 1. Global Scope (this = window)
+        // When you use this outside any object or function → it points to the global object (window in browsers).
+
+        console.log(this); // Window
+
+        // Example:
+        // Like shouting in a marketplace — everyone can hear (global space).
+
+        //2. Inside a Function
+        //By default, functions also make this the global object.
+
+        function test() {
+        console.log(this);
+        }
+        test(); // Window
+
+        // ⚠️ In strict mode, it’s undefined.
+
+        // 🛠️ Real Life Example:
+        // You ask a question without context → nobody knows who you’re talking to (undefined).
+
+        // 3. Inside an Object Method
+
+        // When a function is inside an object, this = the object itself.
+
+        const car = {
+        brand: "Tesla",
+        showBrand: function() {
+            console.log(this.brand);
+        }
+        };
+
+        car.showBrand(); // Tesla
+
+        // 3. Inside an Object Method
+
+        // When a function is inside an object, this = the object itself.
+
+        const car = {
+        brand: "Tesla",
+        showBrand: function() {
+            console.log(this.brand);
+        }
+        };
+
+        car.showBrand(); // Tesla
+
+
+        // 🛠️ Real Life Example:
+        // If you say “my house” when you’re inside your house → “my” = the house you’re in.
+
+        // 4. Inside an Event Handler
+
+        // In events, this = the element that triggered the event.
+
+        <button onclick="console.log(this)">Click Me</button>
+
+        // 👉 When clicked, this = the button itself.
+
+    </script>
+</body>
+</html>
