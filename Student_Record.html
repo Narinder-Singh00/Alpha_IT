@@ -6,6 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Student Record Processing System</h1>
+    <p id="demo"></p>
+    <Script>
+        // // Objective: Design and implement a JavaScript program that simulates the asynchronous
+        //     processing of student records using async/await, for…in, and for…of loops — without involving
+        //     any external API calls//
+        async function Student() {
+            let name = prompt("Enter Student Name:");
+            let studentNames = ["Alice", "Bob", "Charlie"];
+            return new Promise((resolve,reject) => {
+                if (studentNames.includes(name)) {
+                    resolve("Student found: " + name);
+                } else {
+                    reject("Student not found: " + name);
+                }
+
+            });
+            let result = await student();
+            document.getElementById("demo").innerHTML = result;
+
+        }
+    </Script>
 </body>
 </html>
