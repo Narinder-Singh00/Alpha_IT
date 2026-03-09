@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unique Data Tracker System</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f4f4f4;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:20px;
+max-width:600px;
+margin:auto;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+}
+
+button{
+padding:10px 15px;
+margin:5px 0;
+cursor:pointer;
+}
+
+#output{
+background:#111;
+color:#0f0;
+padding:15px;
+margin-top:20px;
+height:200px;
+overflow:auto;
+font-family:monospace;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>User Data Tracker</h2>
+
+<input type="text" id="email" placeholder="Enter User Email">
+
+<input type="number" id="score" placeholder="Enter Score">
+
+<button onclick="addUser()">Add User</button>
+
+<button onclick="updateUser()">Update Score</button>
+
+<button onclick="displayUsers()">Display Users</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+// SET for unique users
+const userSet = new Set();
+
+// MAP for user data
+const userMap = new Map();
+
+// ID → email mapping
+const idMap = new Map();
+
+
+// GENERATOR FUNCTION
+function* idGenerator(){
+let id = 1;
+
+while(true){
+yield "U" + String(id).padStart(3,'0');
+id++;
+}
+}
+
+let generateId = idGenerator();
+
+
+// OUTPUT FUNCTION
+function log(message){
+document.getElementById("output").innerHTML += message + "<br>";
+}
+
+
+// ADD USER
+function addUser(){
+
+let email = document.getElementById("email").value;
+
+if(userSet.has(email)){
+log("User already exists: " + email);
+return;
+}
+
+let id = generateId.next().value;
+
+userSet.add(email);
+
+userMap.set(email,{
+id:id,
+score:0
+});
+
+idMap.set(id,email);
+
+log("User added: " + email + " | ID: " + id);
+
+}
+
+
+// UPDATE USER DATA
+function updateUser(){
+
+let email = document.getElementById("email").value;
+let score = document.getElementById("score").value;
+
+if(!userSet.has(email)){
+log("Error: User does not exist");
+return;
+}
+
+let data = userMap.get(email);
+data.score = score;
+
+userMap.set(email,data);
+
+log("Updated score for " + email);
+
+}
+
+
+// DISPLAY USERS
+function displayUsers(){
+
+log("<br>------ USER LIST ------");
+
+for(let [email,data] of userMap){
+
+log("ID: " + data.id);
+log("Email: " + email);
+log("Score: " + data.score);
+log("------------------");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
